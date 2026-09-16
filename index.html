@@ -4,29 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Favosa Farms — Home for healthy farm produce</title>
+
+<!-- Meta description -->
+<meta name="description" content="Favosa Farms offers organic poultry, fresh catfish and tilapia, premium eggs, and trusted pet care services in Yenagoa, Bayelsa State. Order farm-fresh produce delivered to your door.">
+
+<!-- Open Graph -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://favosafarms.com/">
+<meta property="og:title"       content="Favosa Farms — Home for healthy farm produce">
+<meta property="og:description" content="Organic poultry, fresh fish, premium eggs and pet care services. Raised with care, delivered with trust. Based in Yenagoa, Bayelsa State.">
+<meta property="og:image"       content="https://favosafarms.com/Images/White-birds-optimized.jpg">
+
+<!-- Twitter / WhatsApp card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Favosa Farms — Home for healthy farm produce">
+<meta name="twitter:description" content="Organic poultry, fresh fish, premium eggs and pet care services. Raised with care, delivered with trust.">
+<meta name="twitter:image"       content="https://favosafarms.com/Images/White-birds-optimized.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="Images/Favosa-logo.jpeg">
+
 <link rel="stylesheet" href="styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" as="style" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+
+<!-- LocalBusiness structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Favosa Farms",
+  "description": "Organic poultry, fresh fish, premium eggs and pet care services in Yenagoa, Bayelsa State.",
+  "url": "https://favosafarms.com",
+  "telephone": "+2348073228022",
+  "email": "favosa91@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Finaps Street, Off Alamieyesegha Road, Okutukutu",
+    "addressLocality": "Yenagoa",
+    "addressRegion": "Bayelsa State",
+    "addressCountry": "NG"
+  },
+  "sameAs": [
+    "https://www.facebook.com/share/1BqQjKA3nL/",
+    "https://www.instagram.com/favosafarms"
+  ]
+}
+</script>
 </head>
 <body>
 
 <header>
   <div class="wrap nav-row">
     <div class="logo">
-      <img src="Images/Favosa-logo.jpeg" alt="" class="logo-b">
-      <a href="#top">
-      
-      Favosa Farms
-    </a>
+      <img src="Images/Favosa-logo.jpeg" alt="Favosa Farms logo" class="logo-b">
+      <a href="#top">Favosa Farms</a>
     </div>
     
-    <nav class="primary-nav">
-      <a href="#about">About</a>
-      <a href="#what-we-do">What we do</a>
-      <a href="#consultation">Consultation</a>
+    <nav class="primary-nav" aria-label="Main navigation">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#what-we-do" class="nav-link">What we do</a>
+      <a href="#consultation" class="nav-link">Consultation</a>
+      <a href="#faq" class="nav-link">FAQ</a>
       <div class="btn-cta">
         <a href="#contact" class="nav-cta">Get in touch</a>
       </div>
@@ -37,10 +79,11 @@
   </div>
 </header>
 
-<div class="mobile-panel" id="mobilePanel">
-  <a href="#about">About</a>
-  <a href="#what-we-do">What we do</a>
-  <a href="#consultation">Consultation</a>
+<div class="mobile-panel" id="mobilePanel" role="dialog" aria-label="Navigation menu">
+  <a href="#about" class="nav-link">About</a>
+  <a href="#what-we-do" class="nav-link">What we do</a>
+  <a href="#consultation" class="nav-link">Consultation</a>
+  <a href="#faq" class="nav-link">FAQ</a>
   <a href="#contact" class="nav-cta">Get in touch</a>
 </div>
 
@@ -56,13 +99,11 @@
            to Your Table</h1>
         <p class="hero-tagline">Enjoy healthy poultry, fresh fish, and premium pet care products raised and selected with care.</p>
       </div>
-        
-        
-        <div class="hero-actions">
-          <a href="#what-we-do" class="btn-hero btn-solid">Explore our produce</a>
-          <a href="#consultation" class="btn-hero btn-outline">Book a consultation</a>
-        </div>
+      <div class="hero-actions">
+        <a href="#what-we-do" class="btn-hero btn-solid">Explore our produce</a>
+        <a href="#consultation" class="btn-hero btn-outline">Book a consultation</a>
       </div>
+    </div>
   </section>
 
   <!-- ABOUT -->
@@ -83,12 +124,8 @@
           <div class="kicker">About Favosa Farms</div>
           <h2>Built on the farm, not just for it</h2>
         </div>
-        <p>Favosa Farms was founded on a commitment to quality, transparency, and care. Starting as a small poultry and fish farm, we established one non-negotiable standard: every product we offer must be good enough for our own families.
-
-        <p>
-          That standard continues to define us. We raise healthy poultry, produce farm-fresh fish, and provide trusted pet care services while partnering with households, restaurants, and smallholder farmers. Our goal is simple: to deliver food people can trust and knowledge that creates lasting value.
-        </p>
-      </p>
+        <p>Favosa Farms was founded on a commitment to quality, transparency, and care. Starting as a small poultry and fish farm, we established one non-negotiable standard: every product we offer must be good enough for our own families.</p>
+        <p>That standard continues to define us. We raise healthy poultry, produce farm-fresh fish, and provide trusted pet care services while partnering with households, restaurants, and smallholder farmers. Our goal is simple: to deliver food people can trust and knowledge that creates lasting value.</p>
       </div>
     </div>
   </section>
@@ -102,38 +139,71 @@
       </div>
       <div class="services-grid">
         <div class="service-card">
-          <svg class="icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#3C6B34" stroke-width="2"/><path d="M16 26c0-6 4-10 8-10s8 4 8 10-4 8-8 8-8-2-8-8Z" stroke="#3C6B34" stroke-width="2"/></svg>
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" stroke="#3C6B34" stroke-width="2"/><path d="M16 26c0-6 4-10 8-10s8 4 8 10-4 8-8 8-8-2-8-8Z" stroke="#3C6B34" stroke-width="2"/></svg>
           <h3>Poultry rearing</h3>
           <p>Free-range and deep-litter birds raised on clean feed, with full vaccination records for every batch we sell.</p>
         </div>
         <div class="service-card">
-          <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M8 24c6-8 20-8 26 0-6 8-20 8-26 0Z" stroke="#3C6B34" stroke-width="2"/><path d="M34 24l6-5v10l-6-5Z" stroke="#3C6B34" stroke-width="2"/></svg>
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 24c6-8 20-8 26 0-6 8-20 8-26 0Z" stroke="#3C6B34" stroke-width="2"/><path d="M34 24l6-5v10l-6-5Z" stroke="#3C6B34" stroke-width="2"/></svg>
           <h3>Fish farming</h3>
           <p>Catfish and tilapia grown in monitored ponds, harvested fresh and delivered live or processed to order.</p>
         </div>
         <div class="service-card">
-          <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M24 40c-4-10-14-14-14-24a10 10 0 0120 0c0 10-10 14-14 24" stroke="#3C6B34" stroke-width="2"/><path d="M24 40c4-10 14-14 14-24" stroke="#3C6B34" stroke-width="2"/></svg>
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 40c-4-10-14-14-14-24a10 10 0 0120 0c0 10-10 14-14 24" stroke="#3C6B34" stroke-width="2"/><path d="M24 40c4-10 14-14 14-24" stroke="#3C6B34" stroke-width="2"/></svg>
           <h3>Healthy produce</h3>
           <p>Eggs, dressed poultry and fresh fish, handled and stored the way we'd want them handled for our own kitchen.</p>
         </div>
         <div class="service-card">
-          <svg class="icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="6" stroke="#3C6B34" stroke-width="2"/><path d="M12 38c0-8 5-13 12-13s12 5 12 13" stroke="#3C6B34" stroke-width="2"/></svg>
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="18" r="6" stroke="#3C6B34" stroke-width="2"/><path d="M12 38c0-8 5-13 12-13s12 5 12 13" stroke="#3C6B34" stroke-width="2"/></svg>
           <h3>Pet care</h3>
           <p>Feeding, grooming and basic health checks for dogs, so the animals in your home get the same standard of care.</p>
         </div>
         <div class="service-card">
-          <svg class="icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="24" rx="2" stroke="#3C6B34" stroke-width="2"/><path d="M8 18h32" stroke="#3C6B34" stroke-width="2"/></svg>
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="8" y="10" width="32" height="24" rx="2" stroke="#3C6B34" stroke-width="2"/><path d="M8 18h32" stroke="#3C6B34" stroke-width="2"/></svg>
           <h3>Agric consultation</h3>
           <p>One-on-one guidance on poultry, fish or livestock setup — from site planning to your first successful harvest.</p>
         </div>
         <div class="service-card">
-          <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M6 34l10-18 8 10 6-8 12 16" stroke="#3C6B34" stroke-width="2" stroke-linejoin="round" fill="none"/></svg>
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M6 34l10-18 8 10 6-8 12 16" stroke="#3C6B34" stroke-width="2" stroke-linejoin="round" fill="none"/></svg>
           <h3>Farm-to-door delivery</h3>
           <p>Scheduled delivery routes across the state, so fresh produce reaches you the same day it leaves the farm.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- TESTIMONIALS -->
+  <!-- <section class="testimonials" id="testimonials">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">What customers say</div>
+        <h2>Trusted by households and restaurants alike</h2>
+      </div>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial-card">
+          <p>"The catfish we got from Favosa Farms was the freshest we've had — delivered alive and well-sized. Our restaurant has been ordering weekly ever since."</p>
+          <footer>
+            <strong>Mama Chibuzor</strong>
+            <span>Restaurant owner, Yenagoa</span>
+          </footer>
+        </blockquote>
+        <blockquote class="testimonial-card">
+          <p>"I tried their farm consultation before setting up my own poultry pen and it saved me from so many rookie mistakes. Worth every minute of that session."</p>
+          <footer>
+            <strong>Emmanuel A.</strong>
+            <span>Smallholder farmer, Okolobiri</span>
+          </footer>
+        </blockquote>
+        <blockquote class="testimonial-card">
+          <p>"Their eggs are consistently clean, large and fresh. I've stopped buying from the market entirely. The 7-day doorstep delivery is a bonus I didn't expect to love so much."</p>
+          <footer>
+            <strong>Ngozi P.</strong>
+            <span>Home cook, Opolo</span>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section> -->
 
   <!-- CONSULTATION -->
   <section class="consult" id="consultation">
@@ -154,10 +224,98 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap faq-wrap">
+      <div class="section-head">
+        <div class="kicker">FAQ</div>
+        <h2>Questions we get asked a lot</h2>
+      </div>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>What areas do you deliver to?</summary>
+          <p>We currently deliver across Yenagoa and surrounding communities in Bayelsa State. Orders are fulfilled within 7 days of placement. Contact us to confirm availability in your specific area.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you deliver fish live or processed?</summary>
+          <p>Both. You can specify at the time of order. Live catfish and tilapia are transported in aerated water. Processed fish is cleaned, dressed and packaged to your preference — whole, gutted or filleted.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is your minimum order quantity?</summary>
+          <p>Minimum orders vary by product. For fish, we typically start from 5 kg. For poultry, a minimum of 2 birds. Eggs are sold by the crate (30 eggs). Reach out via WhatsApp or phone and we'll work with your needs.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are your products certified organic?</summary>
+          <p>All our produce is raised without synthetic drugs, growth hormones or chemical feed additives. While we operate to organic standards, we are a small farm and do not yet hold a formal certification body stamp.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I book a farm consultation?</summary>
+          <p>Use the contact form below, or reach us directly via WhatsApp or phone. Sessions can be conducted in person on-farm or remotely depending on your location. The first consultation call is free.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you accept bulk and restaurant orders?</summary>
+          <p>Yes — we supply restaurants, hotels and caterers on a regular schedule. Get in touch to discuss volume pricing and recurring delivery arrangements.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
 </main>
 
+<!-- CONTACT FORM + FOOTER -->
 <footer id="contact">
   <div class="wrap">
+
+    <!-- Contact form -->
+    <div class="contact-section">
+      <div class="contact-intro">
+        <div class="kicker" style="color:var(--green-bright);">Get in touch</div>
+        <h2 style="color:var(--white);">We'd love to hear from you</h2>
+        <p>Orders, questions, consultation bookings — drop us a message and we'll get back to you within 24 hours. Or reach us directly on WhatsApp.</p>
+        <a href="https://wa.me/2348073228022" class="btn-solid on-dark wa-btn" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
+        </a>
+      </div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">Full name <span aria-hidden="true">*</span></label>
+            <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder="e.g. Amaka Johnson">
+          </div>
+          <div class="form-group">
+            <label for="cf-phone">Phone / WhatsApp <span aria-hidden="true">*</span></label>
+            <input type="tel" id="cf-phone" name="phone" autocomplete="tel" required placeholder="+234…">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cf-subject">What are you enquiring about?</label>
+          <select id="cf-subject" name="subject">
+            <option value="">— Select a topic —</option>
+            <option value="order-poultry">Order — Poultry</option>
+            <option value="order-fish">Order — Fish</option>
+            <option value="order-eggs">Order — Eggs</option>
+            <option value="pet-care">Pet care services</option>
+            <option value="consultation">Farm consultation</option>
+            <option value="delivery">Delivery enquiry</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cf-message">Message <span aria-hidden="true">*</span></label>
+          <textarea id="cf-message" name="message" rows="4" required placeholder="Tell us what you need…"></textarea>
+        </div>
+        <button type="submit" class="btn-solid form-submit">Send message</button>
+        <p class="form-notice" id="formNotice" aria-live="polite"></p>
+      </form>
+    </div>
+
     <div class="footer-grid">
       <div class="footer-brand">
         Favosa Farms
@@ -169,19 +327,18 @@
           <a href="#about">About</a>
           <a href="#what-we-do">What we do</a>
           <a href="#consultation">Consultation</a>
+          <a href="#faq">FAQ</a>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
-          <a href="mailto:hello@favosafarms.com"><i class="fa-regular fa-envelope"></i>favosa91@gmail.com</a>
-          <a href="tel:+2348073228022" ><i class="fa-solid fa-phone"></i>+2348073228022</a>
-          <a href=""><i class="fa-solid fa-location-dot"></i>15 Finaps Street, Off Alamieyesegha Road, Okutukutu, Yenagoa, Bayelsa State.</a>
-          <div class="socials" style="display: flex; align-items: center; gap: 1rem;">      
-            
-          <a href="https://www.facebook.com/share/1BqQjKA3nL/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-          <a href="https://wa.me/2348073228022" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="https://www.instagram.com/favosafarms?stkn=MWttemd0ajhramZ5bw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="mailto:favosa91@gmail.com"><i class="fa-regular fa-envelope" aria-hidden="true"></i>favosa91@gmail.com</a>
+          <a href="tel:+2348073228022"><i class="fa-solid fa-phone" aria-hidden="true"></i>+2348073228022</a>
+          <a href="https://maps.google.com/?q=15+Finaps+Street+Yenagoa" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>15 Finaps Street, Off Alamieyesegha Road, Okutukutu, Yenagoa, Bayelsa State.</a>
+          <div class="socials">
+            <a href="https://www.facebook.com/share/1BqQjKA3nL/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://wa.me/2348073228022" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/favosafarms" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
           </div>
-          
         </div>
       </div>
     </div>
@@ -192,57 +349,120 @@
   </div>
 </footer>
 
+<!-- Back to top -->
+<a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+</a>
+
 <script>
+  /* ── Mobile menu ── */
   const btn = document.getElementById('hamburgerBtn');
   const panel = document.getElementById('mobilePanel');
-  btn.addEventListener('click', () => {
-    const open = panel.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open);
-    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  });
-  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+
+  function openMenu() {
+    panel.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Close menu');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
     panel.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
-  }));
+    btn.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', () => panel.classList.contains('open') ? closeMenu() : openMenu());
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closeMenu();
+  });
 
-const hero = document.querySelector('.hero');
-const currentBackground = document.querySelector('.hero-background-current');
-const nextBackground = document.querySelector('.hero-background-next');
+  /* ── Hero slideshow ── */
+  const currentBackground = document.querySelector('.hero-background-current');
+  const nextBackground    = document.querySelector('.hero-background-next');
+  const images = [
+    'Images/White-birds-optimized.jpg',
+    'Images/man-doing-household-tasks-optimized.jpg',
+    'Images/dog-sit-optimized.jpg',
+    'Images/eggs-optimized.jpg',
+  ];
+  let current = 0;
+  let activeBackground   = currentBackground;
+  let inactiveBackground = nextBackground;
 
-const images = [
-  'Images/White-birds-optimized.jpg',
-  'Images/man-doing-household-tasks-optimized.jpg',
-  'Images/dog-sit-optimized.jpg',
-  'Images/eggs-optimized.jpg',
-];
+  function setBackground(el, img) {
+    el.style.backgroundImage = `linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url(${img})`;
+  }
+  function changeBackground() {
+    current = (current + 1) % images.length;
+    const out = activeBackground, inc = inactiveBackground;
+    setBackground(inc, images[current]);
+    inc.classList.add('is-visible');
+    setTimeout(() => out.classList.remove('is-visible'), 1000);
+    [activeBackground, inactiveBackground] = [inc, out];
+  }
+  setBackground(activeBackground, images[0]);
+  window.setTimeout(() => window.setInterval(changeBackground, 4000), 4000);
 
-let current = 0;
-let activeBackground = currentBackground;
-let inactiveBackground = nextBackground;
+  /* ── Active nav highlight on scroll ── */
+  const sections = document.querySelectorAll('main section[id], footer[id]');
+  const navLinks  = document.querySelectorAll('.primary-nav .nav-link');
 
-function setBackground(element, image) {
-  element.style.backgroundImage = `
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url(${image})
-  `;
-}
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.primary-nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
 
-function changeBackground() {
-  current = (current + 1) % images.length;
-  const outgoingBackground = activeBackground;
-  const incomingBackground = inactiveBackground;
-  setBackground(incomingBackground, images[current]);
-  incomingBackground.classList.add('is-visible');
+  sections.forEach(s => observer.observe(s));
 
-  setTimeout(() => outgoingBackground.classList.remove('is-visible'), 1000);
-  [activeBackground, inactiveBackground] = [incomingBackground, outgoingBackground];
-}
+  /* ── Back to top button ── */
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
 
-// Set initial image
-setBackground(activeBackground, images[0]);
+  /* ── FAQ accordion keyboard support ── */
+  document.querySelectorAll('.faq-item summary').forEach(summary => {
+    summary.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        summary.parentElement.toggleAttribute('open');
+      }
+    });
+  });
 
-// Change every 4 seconds after the first paint is available
-window.setTimeout(() => window.setInterval(changeBackground, 4000), 4000);</script>
+  /* ── Contact form — client-side feedback ── */
+  const form   = document.getElementById('contactForm');
+  const notice = document.getElementById('formNotice');
 
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name    = form.name.value.trim();
+    const phone   = form.phone.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !phone || !message) {
+      notice.textContent = 'Please fill in your name, phone number and message.';
+      notice.className   = 'form-notice error';
+      return;
+    }
+
+    // Build a WhatsApp pre-fill link as the delivery mechanism
+    const subject = form.subject.value || 'General enquiry';
+    const text    = encodeURIComponent(
+      `Hi Favosa Farms,\n\nName: ${name}\nPhone: ${phone}\nEnquiry: ${subject}\n\n${message}`
+    );
+    window.open(`https://wa.me/2348073228022?text=${text}`, '_blank', 'noopener');
+
+    notice.textContent = '✓ Opening WhatsApp with your message pre-filled. Send it to complete your enquiry.';
+    notice.className   = 'form-notice success';
+    form.reset();
+  });
+</script>
 </body>
 </html>
