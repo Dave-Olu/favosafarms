@@ -215,6 +215,12 @@
     overflow:hidden;
   }
 
+  .hero-grid{
+    position:relative;
+    z-index:1;
+    width:100%;
+  }
+
   .hero-background{
     position:absolute;
     inset:0;
@@ -226,6 +232,9 @@
   }
   .hero-background-current{
     opacity:1;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url('Images/White-birds-optimized.jpg');
   }
   .hero-background.is-visible{
     opacity:1;
@@ -256,14 +265,26 @@
     margin-bottom: 2rem;
   }
   .hero-actions{
-    display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    margin-top:34px;
+    flex-wrap:wrap;
   }
   .btn-hero{
-    padding:.8rem;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:48px;
+    padding:.8rem 1.1rem;
 
     &:hover{
-        opacity:0.9;
+        opacity:0.5;
     }
+  }
+
+  @media (max-width:360px){
+    .btn-hero{width:50%; text-align:center;}
   }
   .btn-solid{
     background:var(--green-deep);
@@ -319,6 +340,12 @@
   @media (max-width:860px){
     .hero-grid{grid-template-columns:1fr;}
     .hero-visual{height:320px; order:-1;}
+  }
+
+  @media (max-width:600px){
+    .hero{min-height:680px; height:auto; padding:96px 0;}
+    .hero-actions{flex-direction:column; align-items:stretch; margin-top:28px;}
+    .btn-hero{width:100%;}
   }
 
   /* ---------- Section shared ---------- */

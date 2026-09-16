@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" as="style" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
 </head>
 <body>
 
@@ -57,9 +58,10 @@
       </div>
         
         
+        <div class="hero-actions">
           <a href="#what-we-do" class="btn-hero btn-solid">Explore our produce</a>
           <a href="#consultation" class="btn-hero btn-outline">Book a consultation</a>
-       
+        </div>
       </div>
   </section>
 
@@ -171,12 +173,12 @@
         <div class="footer-col">
           <h4>Contact</h4>
           <a href="mailto:hello@favosafarms.com"><i class="fa-regular fa-envelope"></i>favosa91@gmail.com</a>
-          <a href="tel:+2347068183888" ><i class="fa-solid fa-phone"></i>+2347068183888</a>
+          <a href="tel:+2348073228022" ><i class="fa-solid fa-phone"></i>+2348073228022</a>
           <a href=""><i class="fa-solid fa-location-dot"></i>15 Finaps Street, Off Alamieyesegha Road, Okutukutu, Yenagoa, Bayelsa State.</a>
           <div class="socials" style="display: flex; align-items: center; gap: 1rem;">      
             
           <a href="https://www.facebook.com/share/1BqQjKA3nL/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-          <a href="https://wa.me/2347068183888" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://wa.me/2348073228022" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
           <a href="https://www.instagram.com/favosafarms?stkn=MWttemd0ajhramZ5bw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
           </div>
           
@@ -208,10 +210,10 @@ const currentBackground = document.querySelector('.hero-background-current');
 const nextBackground = document.querySelector('.hero-background-next');
 
 const images = [
-  'Images/White-birds.jpg',
-  'Images/man-doing-household-tasks.jpg',
-  'Images/dog-sit.jpg',
-  'Images/eggs.jpg',
+  'Images/White-birds-optimized.jpg',
+  'Images/man-doing-household-tasks-optimized.jpg',
+  'Images/dog-sit-optimized.jpg',
+  'Images/eggs-optimized.jpg',
 ];
 
 let current = 0;
@@ -239,8 +241,8 @@ function changeBackground() {
 // Set initial image
 setBackground(activeBackground, images[0]);
 
-// Change every 4 seconds
-setInterval(changeBackground, 4000);</script>
+// Change every 4 seconds after the first paint is available
+window.setTimeout(() => window.setInterval(changeBackground, 4000), 4000);</script>
 
 </body>
 </html>
