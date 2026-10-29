@@ -59,32 +59,116 @@
 
 <header>
   <div class="wrap nav-row">
+    <!-- Logo -->
     <div class="logo">
       <img src="Images/Favosa-logo.jpeg" alt="Favosa Farms logo" class="logo-b">
-      <a href="#top">Favosa Farms</a>
+      <a href="#top" class="logo-name">
+        <span class="logo-title">FAVOSA<br>FARMS</span>
+        <span class="logo-sub">Healthy Protein. Ethical Farming.</span>
+      </a>
     </div>
-    
+
+    <!-- Desktop nav -->
     <nav class="primary-nav" aria-label="Main navigation">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#what-we-do" class="nav-link">What we do</a>
-      <a href="#consultation" class="nav-link">Consultation</a>
-      <a href="#faq" class="nav-link">FAQ</a>
-      <div class="btn-cta">
-        <a href="#contact" class="nav-cta">Get in touch</a>
+      <a href="#top" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About Us</a>
+
+      <!-- Products dropdown -->
+      <div class="nav-item has-dropdown">
+        <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Products <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+        </button>
+        <ul class="dropdown" role="menu">
+          <li role="none"><a href="#" role="menuitem"><i class="fa-solid fa-drumstick-bite" aria-hidden="true"></i> Broilers</a></li>
+          <li role="none"><a href="#" role="menuitem"><i class="fa-solid fa-fish" aria-hidden="true"></i> Catfish</a></li>
+          <li role="none"><a href="#" role="menuitem"><i class="fa-solid fa-dog" aria-hidden="true"></i> Dogs</a></li>
+          <li role="none" class="dropdown-soon"><a href="#" role="menuitem"><i class="fa-solid fa-egg" aria-hidden="true"></i> Layers <span class="badge">Soon</span></a></li>
+          <li role="none" class="dropdown-soon"><a href="#" role="menuitem"><i class="fa-solid fa-fish-fins" aria-hidden="true"></i> Catfish Hatchery <span class="badge">Soon</span></a></li>
+          <li role="none" class="dropdown-soon"><a href="#" role="menuitem"><i class="fa-solid fa-seedling" aria-hidden="true"></i> Quail Eggs <span class="badge">Soon</span></a></li>
+        </ul>
       </div>
+
+      <!-- Services dropdown -->
+      <div class="nav-item has-dropdown">
+        <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Services <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+        </button>
+        <ul class="dropdown" role="menu">
+          <li role="none"><a href="#consultation" role="menuitem"><i class="fa-solid fa-tractor" aria-hidden="true"></i> Farm Setup</a></li>
+          <li role="none"><a href="#consultation" role="menuitem"><i class="fa-solid fa-comments" aria-hidden="true"></i> Consultancy</a></li>
+          <li role="none"><a href="#" role="menuitem"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Training</a></li>
+          <li role="none"><a href="#" role="menuitem"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i> Farm Audit</a></li>
+        </ul>
+      </div>
+
+      <!-- Learn dropdown -->
+      <div class="nav-item has-dropdown">
+        <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Learn <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+        </button>
+        <ul class="dropdown" role="menu">
+          <li role="none"><a href="#faq" role="menuitem"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> FAQ</a></li>
+          <li role="none"><a href="#" role="menuitem"><i class="fa-solid fa-blog" aria-hidden="true"></i> Blog <span class="badge">Soon</span></a></li>
+        </ul>
+      </div>
+
+      <a href="#contact" class="nav-link">Contact Us</a>
     </nav>
+
+    <!-- CTA -->
+    <a href="https://wa.me/2348073228022" class="btn-order-now" target="_blank" rel="noopener">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> ORDER NOW
+    </a>
+
+    <!-- Hamburger -->
     <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
+<!-- Mobile panel -->
 <div class="mobile-panel" id="mobilePanel" role="dialog" aria-label="Navigation menu">
-  <a href="#about" class="nav-link">About</a>
-  <a href="#what-we-do" class="nav-link">What we do</a>
-  <a href="#consultation" class="nav-link">Consultation</a>
-  <a href="#faq" class="nav-link">FAQ</a>
-  <a href="#contact" class="nav-cta">Get in touch</a>
+  <a href="#top" class="nav-link">Home</a>
+  <a href="#about" class="nav-link">About Us</a>
+
+  <!-- Mobile accordion: Products -->
+  <div class="mob-group">
+    <button class="mob-group-toggle">Products <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+    <div class="mob-group-body">
+      <a href="#">Broilers</a>
+      <a href="#">Catfish</a>
+      <a href="#">Dogs</a>
+      <a href="#" class="mob-soon">Layers <span class="badge">Soon</span></a>
+      <a href="#" class="mob-soon">Catfish Hatchery <span class="badge">Soon</span></a>
+      <a href="#" class="mob-soon">Quail Eggs <span class="badge">Soon</span></a>
+    </div>
+  </div>
+
+  <!-- Mobile accordion: Services -->
+  <div class="mob-group">
+    <button class="mob-group-toggle">Services <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+    <div class="mob-group-body">
+      <a href="#consultation">Farm Setup</a>
+      <a href="#consultation">Consultancy</a>
+      <a href="#">Training</a>
+      <a href="#">Farm Audit</a>
+    </div>
+  </div>
+
+  <!-- Mobile accordion: Learn -->
+  <div class="mob-group">
+    <button class="mob-group-toggle">Learn <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+    <div class="mob-group-body">
+      <a href="#faq">FAQ</a>
+      <a href="#" class="mob-soon">Blog <span class="badge">Soon</span></a>
+    </div>
+  </div>
+
+  <a href="#contact" class="nav-link">Contact Us</a>
+  <a href="https://wa.me/2348073228022" class="mob-order-btn" target="_blank" rel="noopener">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> ORDER NOW
+  </a>
 </div>
 
 <main id="top">
@@ -402,6 +486,7 @@
     [activeBackground, inactiveBackground] = [inc, out];
   }
   setBackground(activeBackground, images[0]);
+  activeBackground.classList.add('is-visible');
   window.setTimeout(() => window.setInterval(changeBackground, 4000), 4000);
 
   /* ── Active nav highlight on scroll ── */
@@ -462,6 +547,18 @@
     notice.textContent = '✓ Opening WhatsApp with your message pre-filled. Send it to complete your enquiry.';
     notice.className   = 'form-notice success';
     form.reset();
+  });
+  /* ── Mobile accordion groups ── */
+  document.querySelectorAll('.mob-group-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const group = toggle.closest('.mob-group');
+      const isOpen = group.classList.contains('open');
+      document.querySelectorAll('.mob-group').forEach(g => g.classList.remove('open'));
+      if (!isOpen) group.classList.add('open');
+    });
+  });
+  document.querySelectorAll('.mob-group-body a').forEach(a => {
+    a.addEventListener('click', closeMenu);
   });
 </script>
 </body>

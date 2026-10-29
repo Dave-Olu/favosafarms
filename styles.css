@@ -22,8 +22,8 @@ body{
 }
 
 h1,h2,h3{
-  font-family:'Fraunces', serif;
-  font-weight:600;
+  font-family:'Work Sans', sans-serif;
+  font-weight:700;
   line-height:1.08;
   letter-spacing:-0.01em;
 }
@@ -102,8 +102,8 @@ header{
 }
 .logo{
   display:flex; align-items:center; gap:10px;
-  font-family:'Fraunces', serif;
-  font-weight:600;
+  font-family:'Work Sans', sans-serif;
+  font-weight:700;
   font-size:1.25rem;
 }
 .logo-b{
@@ -198,7 +198,7 @@ nav.primary-nav .nav-link.active{ color:var(--green-deep); }
 }
 .mobile-panel a{
   display:block;
-  font-family:'Fraunces', serif;
+  font-family:'Work Sans', sans-serif;
   font-size:1.6rem;
   padding:16px 0;
   border-bottom:1px solid var(--line);
@@ -219,6 +219,7 @@ nav.primary-nav .nav-link.active{ color:var(--green-deep); }
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  gap:8px;
   width:100%;
   padding:14px 24px;
   background:var(--green-deep);
@@ -229,6 +230,8 @@ nav.primary-nav .nav-link.active{ color:var(--green-deep); }
   font-weight:600;
   border-bottom:none;
   letter-spacing:0.01em;
+  opacity:1;
+  transform:none;
   transition:background .2s ease, opacity .25s ease, transform .25s ease;
 }
 .mobile-panel a.nav-cta:hover{ background:#1f5018; }
@@ -264,7 +267,7 @@ nav.primary-nav .nav-link.active{ color:var(--green-deep); }
   transition:opacity 1s ease-in-out;
 }
 .hero-background-current{
-  opacity:1;
+  opacity:0;
   background-image:
     linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
     url('Images/White-birds-optimized.jpg');
@@ -363,7 +366,7 @@ section{padding:96px 0;}
   height:100%;
 }
 .about-figure .stat{
-  font-family:'Fraunces', serif;
+  font-family:'Work Sans', sans-serif;
   font-size:2.6rem;
   color:var(--green-bright);
 }
@@ -500,7 +503,7 @@ section{padding:96px 0;}
 .consult-list li:first-child{border-top:none;}
 .consult-list .num{
   color:var(--green-bright);
-  font-family:'Fraunces', serif;
+  font-family:'Work Sans', sans-serif;
   font-weight:600;
   min-width:24px;
 }
@@ -671,7 +674,7 @@ footer{
   border-bottom:1px solid rgba(255,255,255,.14);
 }
 .footer-brand{
-  font-family:'Fraunces', serif;
+  font-family:'Work Sans', sans-serif;
   color:var(--white);
   font-size:1.3rem;
   max-width:32ch;
