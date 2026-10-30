@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageBanner from "../../components/PageBanner";
-import { faqs } from "../../lib/faqs";
+import { getPublicFaqs } from "../../lib/cms";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
@@ -9,7 +9,9 @@ export const metadata: Metadata = {
     "Find answers about Favosa Farms products, orders, delivery, farm visits and agricultural services.",
 };
 
-export default function FaqPage() {
+export default async function FaqPage() {
+  const faqs = await getPublicFaqs();
+
   return (
     <main id="top">
       <PageBanner
@@ -32,7 +34,7 @@ export default function FaqPage() {
 
           <div className="contact-faq-list">
             {faqs.map((faq) => (
-              <details className="contact-faq-item" key={faq.question}>
+              <details className="contact-faq-item" key={faq.id}>
                 <summary className="contact-faq-summary">
                   {faq.question}
                   <span aria-hidden="true" className="contact-faq-chevron">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { getAboutMetrics } from "../../lib/cms";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -35,34 +36,6 @@ const values = [
     icon: "leaf",
     title: "Sustainability",
     description: "We care for our land, animals and future.",
-  },
-];
-
-const impactStats = [
-  {
-    icon: "chicken",
-    metric: "50,000+",
-    label: "Broilers Raised",
-  },
-  {
-    icon: "fish",
-    metric: "20,000+",
-    label: "Catfish Produced",
-  },
-  {
-    icon: "graduation",
-    metric: "300+",
-    label: "Farmers Trained",
-  },
-  {
-    icon: "farm",
-    metric: "150+",
-    label: "Farms Supported",
-  },
-  {
-    icon: "heart",
-    metric: "Thousands",
-    label: "Families Served",
   },
 ];
 
@@ -158,7 +131,9 @@ function AboutIcon({ name }: { name: string }) {
   return null;
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const impactStats = await getAboutMetrics();
+
   return (
     <main id="top">
       {/* 1. HERO SECTION */}
@@ -365,7 +340,7 @@ export default function AboutPage() {
                 <div className="about-impact-icon-circle">
                   <AboutIcon name={item.icon} />
                 </div>
-                <div className="about-impact-stat">{item.metric}</div>
+                <div className="about-impact-stat">{item.value}</div>
                 <div className="about-impact-text">{item.label}</div>
               </div>
             ))}

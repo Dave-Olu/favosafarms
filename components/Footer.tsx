@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { farmAddress } from "../lib/farmAddress";
+import {
+  formatBusinessAddress,
+  formatPhoneForLink,
+  type BusinessSettings,
+} from "../lib/cms";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -77,7 +81,9 @@ function FooterIcon({ name }: { name: FooterIconName }) {
   );
 }
 
-export default function Footer() {
+export default function Footer({ business }: { business: BusinessSettings }) {
+  const formattedAddress = formatBusinessAddress(business);
+
   return (
     <footer className="site-footer">
       <div className="wrap">
@@ -151,35 +157,39 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="footer-col footer-contact footer-help">
+          <div className="footer-col footer-contact">
             <h2>Contact</h2>
-            <a className="footer-contact-link" href="tel:+2348134567890">
+            <a className="footer-contact-link" href={`tel:${formatPhoneForLink(business.phone_primary)}`}>
               <FooterIcon name="phone" />
-              <span>+234 813 456 7890</span>
+              <span>{business.phone_primary}</span>
             </a>
-            <a className="footer-contact-link" href="tel:+2348134567891">
-              <FooterIcon name="phone" />
-              <span>+234 813 456 7891</span>
-            </a>
-            <a className="footer-contact-link" href="mailto:info@favosafarms.com">
+            {business.phone_secondary ? (
+              <a className="footer-contact-link" href={`tel:${formatPhoneForLink(business.phone_secondary)}`}>
+                <FooterIcon name="phone" />
+                <span>{business.phone_secondary}</span>
+              </a>
+            ) : null}
+            <a className="footer-contact-link" href={`mailto:${business.email}`}>
               <FooterIcon name="email" />
-              <span>info@favosafarms.com</span>
+              <span>{business.email}</span>
             </a>
             <a
               className="footer-contact-link"
-              href={`https://maps.google.com/?q=${encodeURIComponent(farmAddress.formatted)}`}
+              href={`https://maps.google.com/?q=${encodeURIComponent(formattedAddress)}`}
               rel="noopener noreferrer"
               target="_blank"
             >
               <FooterIcon name="location" />
-              <span>{farmAddress.formatted}.</span>
+              <span>{formattedAddress}.</span>
             </a>
-            <p>Questions about products or farm services? Our team is happy to help.</p>
-            <Link className="footer-contact-cta" href="/contact">
-              Contact the farm
-              <span aria-hidden="true">→</span>
-            </Link>
           </div>
+        </div>
+        <div className="footer-question-section">
+          <p>Questions about products or farm services? Our team is happy to help.</p>
+          <Link className="footer-contact-cta" href="/contact">
+            Contact the farm
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Favosa Farms. All rights reserved.</span>

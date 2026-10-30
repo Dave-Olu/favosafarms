@@ -173,7 +173,7 @@ function DesktopDropdown({ link, active }: { link: NavLink; active: boolean }) {
 }
 
 /* ── Main Navbar ── */
-export default function Navbar() {
+export default function Navbar({ whatsappPhone }: { whatsappPhone: string }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState<string | null>(null);
@@ -263,6 +263,7 @@ export default function Navbar() {
         <OrderNowButton
           className="nav-order-btn"
           aria-label="Order now on WhatsApp"
+          whatsappPhone={whatsappPhone}
         >
           <WhatsAppIcon />
           ORDER NOW
@@ -332,6 +333,7 @@ export default function Navbar() {
         <OrderNowButton
           className="mob-order-btn"
           onClick={closeMenu}
+          whatsappPhone={whatsappPhone}
         >
           <WhatsAppIcon />
           ORDER NOW

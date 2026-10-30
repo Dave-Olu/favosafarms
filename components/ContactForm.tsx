@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState, type FormEvent } from "react";
 
 type ContactFormProps = {
   consultation?: boolean;
@@ -11,10 +11,13 @@ export default function ContactForm({
 }: ContactFormProps) {
   const [notice, setNotice] = useState("");
   const [noticeType, setNoticeType] = useState<"error" | "success" | "">("");
+  const [fallbackUrl, setFallbackUrl] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const name = String(formData.get("name") ?? "").trim();
     const phone = String(formData.get("phone") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
@@ -40,14 +43,53 @@ export default function ContactForm({
       .filter(Boolean)
       .join("\n");
 
-    window.open(
-      `https://wa.me/2348073228022?text=${encodeURIComponent(text)}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
-    setNotice("WhatsApp opened with your message. Send it there to complete your enquiry.");
-    setNoticeType("success");
-    event.currentTarget.reset();
+    setIsSubmitting(true);
+    setFallbackUrl("");
+
+    try {
+      const response = await fetch(consultation ? "/api/bookings" : "/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          subject,
+          service: subject,
+          message,
+        }),
+      });
+      const result: unknown = await response.json();
+      const responseData =
+        typeof result === "object" && result !== null
+          ? (result as Record<string, unknown>)
+          : {};
+
+      if (!response.ok) {
+        setNotice(
+          typeof responseData.error === "string"
+            ? responseData.error
+            : "Could not send your enquiry. Please try again.",
+        );
+        setNoticeType("error");
+        setFallbackUrl(`https://wa.me/2348073228022?text=${encodeURIComponent(text)}`);
+        return;
+      }
+
+      setNotice(
+        typeof responseData.message === "string"
+          ? responseData.message
+          : "Your enquiry has been received.",
+      );
+      setNoticeType("success");
+      form.reset();
+    } catch {
+      setNotice("Could not send your enquiry. Please try again or contact us on WhatsApp.");
+      setNoticeType("error");
+      setFallbackUrl(`https://wa.me/2348073228022?text=${encodeURIComponent(text)}`);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -118,11 +160,23 @@ export default function ContactForm({
           rows={5}
         />
       </div>
-      <button className="btn-solid form-submit" type="submit">
-        {consultation ? "Request a consultation" : "Send message"}
+      <button className="btn-solid form-submit" disabled={isSubmitting} type="submit">
+        {isSubmitting
+          ? "Sending…"
+          : consultation
+            ? "Request a consultation"
+            : "Send message"}
       </button>
       <p aria-live="polite" className={`form-notice ${noticeType}`}>
         {notice}
+        {fallbackUrl ? (
+          <>
+            {" "}
+            <a href={fallbackUrl} rel="noopener noreferrer" target="_blank">
+              Send via WhatsApp instead.
+            </a>
+          </>
+        ) : null}
       </p>
     </form>
   );

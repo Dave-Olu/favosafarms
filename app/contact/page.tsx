@@ -158,7 +158,7 @@ export default function ContactPage() {
         <div className="wrap contact-main-grid">
 
           {/* Left: Message Form */}
-          <div className="contact-form-block">
+          <div className="contact-form-block" id="contact-form">
             <h2 className="contact-section-label">SEND US A MESSAGE</h2>
             <LeafAccent />
             <p className="contact-form-intro">Fill out the form and we&apos;ll get back to you as soon as possible.</p>
@@ -262,12 +262,12 @@ export default function ContactPage() {
                 <div className="contact-founder-content">
                   <h3>Let&apos;s Work Together</h3>
                   <p>Whether you&apos;re a home buyer, aspiring farmer, or business partner, we are ready to partner with you for a better tomorrow.</p>
-                  <Link href="/book-consultation" className="contact-founder-btn">
+                  <a href="#contact-form" className="contact-founder-btn">
                     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16 }}>
                       <rect x="3.5" y="5" width="17" height="16" rx="2" /><path d="M7.5 3v4M16.5 3v4M3.5 10h17M8 14h3v3H8z" />
                     </svg>
                     BOOK A CONSULTATION
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

@@ -8,6 +8,7 @@ type OrderNowButtonProps = {
   children: ReactNode;
   className: string;
   onClick?: () => void;
+  whatsappPhone: string;
 };
 
 export default function OrderNowButton({
@@ -15,6 +16,7 @@ export default function OrderNowButton({
   children,
   className,
   onClick,
+  whatsappPhone,
 }: OrderNowButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState("");
@@ -97,7 +99,7 @@ export default function OrderNowButton({
       .join("\n");
 
     window.open(
-      `https://wa.me/2348073228022?text=${encodeURIComponent(message)}`,
+      `https://wa.me/${whatsappPhone.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`,
       "_blank",
       "noopener,noreferrer",
     );

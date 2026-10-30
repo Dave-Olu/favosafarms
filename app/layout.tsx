@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import SiteChrome from "../components/SiteChrome";
 import StickyMobileCTA from "../components/StickyMobileCTA";
-import { farmAddress } from "../lib/farmAddress";
+import {
+  formatBusinessAddress,
+  formatPhoneForLink,
+  formatWhatsappNumber,
+  getBusinessSettings,
+} from "../lib/cms";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,11 +31,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const business = await getBusinessSettings();
+  const whatsappPhone = formatWhatsappNumber(business.whatsapp_phone);
+
   return (
     <html lang="en">
       <head>
@@ -45,15 +54,15 @@ export default function RootLayout({
               description:
                 "Healthy poultry, fresh fish, premium eggs and pet care services in Yenagoa, Bayelsa State.",
               url: "https://favosafarms.com",
-              telephone: "+2348073228022",
-              email: "favosa91@gmail.com",
+              telephone: formatPhoneForLink(business.phone_primary),
+              email: business.email,
               address: {
                 "@type": "PostalAddress",
-                streetAddress: farmAddress.streetAddress,
-                addressLocality: farmAddress.addressLocality,
-                postalCode: farmAddress.postalCode,
-                addressRegion: farmAddress.addressRegion,
-                addressCountry: farmAddress.addressCountry,
+                streetAddress: business.street_address,
+                addressLocality: business.address_locality,
+                postalCode: business.postal_code,
+                addressRegion: business.address_region,
+                addressCountry: business.address_country,
               },
               sameAs: [
                 "https://www.facebook.com/share/1BqQjKA3nL/",
@@ -62,10 +71,13 @@ export default function RootLayout({
             }),
           }}
         />
-        <Navbar />
-        {children}
-        <Footer />
-        <StickyMobileCTA />
+        <SiteChrome
+          footer={<Footer business={business} />}
+          mobileCta={<StickyMobileCTA whatsappPhone={whatsappPhone} />}
+          navbar={<Navbar whatsappPhone={whatsappPhone} />}
+        >
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

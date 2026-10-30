@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import OrderNowButton from "./OrderNowButton";
 
-export default function StickyMobileCTA() {
+export default function StickyMobileCTA({ whatsappPhone }: { whatsappPhone: string }) {
   const pathname = usePathname();
 
   // If inside an admin route, don't show the customer mobile bar
@@ -23,6 +23,7 @@ export default function StickyMobileCTA() {
         <OrderNowButton
           className="mobile-sticky-wa-btn"
           aria-label="Order now on WhatsApp"
+          whatsappPhone={whatsappPhone}
         >
           <svg
             aria-hidden="true"
@@ -78,6 +79,7 @@ export default function StickyMobileCTA() {
         <OrderNowButton
           className="mobile-nav-order-bubble"
           aria-label="Open order form"
+          whatsappPhone={whatsappPhone}
         >
           <div className="mobile-nav-bubble-circle">
             <svg aria-hidden="true" className="mobile-nav-bubble-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
