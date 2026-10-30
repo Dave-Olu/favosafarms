@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductCarousel from "../components/ProductCarousel";
 import OrderNowButton from "../components/OrderNowButton";
+import { formatWhatsappNumber, getBusinessSettings } from "../lib/cms";
 import { articles } from "../lib/content";
 
 const perks = [
@@ -130,7 +131,10 @@ const articleTeasers: Record<string, string> = {
   "safe-food-handling": "Simple habits help keep food safe from farm to kitchen.",
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const business = await getBusinessSettings();
+  const whatsappPhone = formatWhatsappNumber(business.whatsapp_phone);
+
   return (
     <main className="page-home">
       <section className="home-hero-shell">
@@ -142,7 +146,10 @@ export default function HomePage() {
               Ethically raised broilers, premium catfish and quality dogs – for healthy families and a better tomorrow.
             </p>
             <div className="hero-actions">
-              <OrderNowButton className="hero-btn-primary">
+              <OrderNowButton
+                className="hero-btn-primary"
+                whatsappPhone={whatsappPhone}
+              >
                 <svg aria-hidden="true" className="hero-button-icon" viewBox="0 0 24 24" fill="none">
                   <path d="M20.5 11.8a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.3-4.9A8.4 8.4 0 1 1 20.5 11.8Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M8.4 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.5.6c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.1.4.3.4.5 0 .4-.2 1-.6 1.3-.4.4-1.1.6-1.8.5-1-.1-2.3-.7-3.7-1.9-1.2-1-2.1-2.4-2.3-3.5-.2-.8 0-1.5.5-2.1Z" fill="currentColor" />
