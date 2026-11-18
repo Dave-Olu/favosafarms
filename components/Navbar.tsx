@@ -72,12 +72,21 @@ function ChevronIcon() {
 }
 
 /* ── Dropdown item ── */
-function DropdownItem({ item, onClick }: { item: NavItem; onClick?: () => void }) {
+function DropdownItem({
+  item,
+  active = false,
+  onClick,
+}: {
+  item: NavItem;
+  active?: boolean;
+  onClick?: () => void;
+}) {
   return (
     <li>
       <Link
         href={item.href}
-        className={`nav-menu-link${item.soon ? " nav-menu-link--soon" : ""}`}
+        className={`nav-menu-link${item.soon ? " nav-menu-link--soon" : ""}${active ? " nav-menu-link--active" : ""}`}
+        aria-current={active ? "page" : undefined}
         onClick={onClick}
       >
         {item.label}
@@ -88,7 +97,15 @@ function DropdownItem({ item, onClick }: { item: NavItem; onClick?: () => void }
 }
 
 /* ── Desktop dropdown wrapper ── */
-function DesktopDropdown({ link, active }: { link: NavLink; active: boolean }) {
+function DesktopDropdown({
+  link,
+  active,
+  pathname,
+}: {
+  link: NavLink;
+  active: boolean;
+  pathname: string;
+}) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -138,6 +155,7 @@ function DesktopDropdown({ link, active }: { link: NavLink; active: boolean }) {
             <DropdownItem
               key={item.href + item.label}
               item={item}
+              active={pathname === item.href}
               onClick={() => setOpen(false)}
             />
           ))}
@@ -152,6 +170,19 @@ export default function Navbar({ whatsappPhone }: { whatsappPhone: string }) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState<string | null>(null);
+
+  useEffect(() => {
+    const desktopViewport = window.matchMedia("(min-width: 961px)");
+    const handleViewportChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setMenuOpen(false);
+        setMobileOpen(null);
+      }
+    };
+
+    desktopViewport.addEventListener("change", handleViewportChange);
+    return () => desktopViewport.removeEventListener("change", handleViewportChange);
+  }, []);
 
   function closeMenu() {
     setMenuOpen(false);
@@ -187,7 +218,14 @@ export default function Navbar({ whatsappPhone }: { whatsappPhone: string }) {
             const active = isActive(link.href);
 
             if (link.items) {
-              return <DesktopDropdown key={link.href} link={link} active={active} />;
+              return (
+                <DesktopDropdown
+                  key={link.href}
+                  link={link}
+                  active={active}
+                  pathname={pathname}
+                />
+              );
             }
 
             return (
@@ -246,6 +284,7 @@ export default function Navbar({ whatsappPhone }: { whatsappPhone: string }) {
                   onClick={() => setMobileOpen(mobOpen ? null : link.href)}
                   type="button"
                   aria-expanded={mobOpen}
+                  aria-current={active ? "page" : undefined}
                 >
                   {link.label}
                   <ChevronIcon />
@@ -253,7 +292,12 @@ export default function Navbar({ whatsappPhone }: { whatsappPhone: string }) {
                 <div className="mob-group-body">
                   <ul>
                     {link.items.map((item) => (
-                      <DropdownItem key={item.href + item.label} item={item} onClick={closeMenu} />
+                      <DropdownItem
+                        key={item.href + item.label}
+                        item={item}
+                        active={pathname === item.href}
+                        onClick={closeMenu}
+                      />
                     ))}
                   </ul>
                 </div>

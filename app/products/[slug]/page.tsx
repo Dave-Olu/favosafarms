@@ -318,7 +318,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               <div className="pd-gallery-block">
                 <h2 className="pd-section-label">Gallery</h2>
                 <LeafAccent />
-                <div className="pd-gallery-grid">
+                <div
+                  className={`pd-gallery-grid${product.galleryImages.length === 1 ? " pd-gallery-grid--single" : ""}`}
+                >
                   {product.galleryImages.slice(0, 6).map((img, index) => (
                     <div className="pd-gallery-tile" key={`${img.src}-${index}`}>
                       <Image
@@ -351,7 +353,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 <p className="pd-order-desc">
                   {product.slug === "dogs"
                     ? "Talk with our team about current availability, care requirements and whether a dog is the right fit for your home."
-                    : `We are always ready to supply healthy ${product.name.toLowerCase()} for your home, event, restaurant or business.`}
+                    : `Contact our team to confirm current ${product.name.toLowerCase()} availability and discuss quantities and delivery for your needs.`}
                 </p>
                 <ul className="pd-order-options">
                   {product.slug === "dogs"
@@ -389,7 +391,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       {/* ── FAQ & CUSTOMER REVIEW ── */}
       {(product.faqs && product.faqs.length > 0) || product.customerReview ? (
         <section className="pd-faq-promise-section">
-          <div className="wrap pd-faq-promise-grid">
+          <div
+            className={`wrap pd-faq-promise-grid${product.customerReview ? "" : " pd-faq-promise-grid--single"}`}
+          >
 
             {/* Left: FAQ Accordion */}
             {product.faqs && product.faqs.length > 0 && (
@@ -411,26 +415,20 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             )}
 
             {/* Right: Customer Review */}
-            <div className="pd-review-card">
-              <div className="pd-review-icon" aria-hidden="true">
-                <IconHeart />
-              </div>
-              <h3>Customer review</h3>
-              {product.customerReview ? (
-                <>
-                  <blockquote className="pd-review-quote">
-                    “{product.customerReview.quote}”
-                  </blockquote>
-                  <p className="pd-review-author">
-                    — {product.customerReview.name}, {product.customerReview.context}
-                  </p>
-                </>
-              ) : (
-                <p className="pd-review-empty">
-                  We&apos;ll share a product-specific customer review here when one is available.
+            {product.customerReview ? (
+              <div className="pd-review-card">
+                <div className="pd-review-icon" aria-hidden="true">
+                  <IconHeart />
+                </div>
+                <h3>Customer review</h3>
+                <blockquote className="pd-review-quote">
+                  “{product.customerReview.quote}”
+                </blockquote>
+                <p className="pd-review-author">
+                  — {product.customerReview.name}, {product.customerReview.context}
                 </p>
-              )}
-            </div>
+              </div>
+            ) : null}
 
           </div>
         </section>
