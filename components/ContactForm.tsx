@@ -22,10 +22,15 @@ export default function ContactForm({
     const phone = String(formData.get("phone") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
     const subject = String(formData.get("subject") ?? "").trim();
+    const service = String(formData.get("service") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
 
-    if (!name || !phone || !message) {
-      setNotice("Please provide your name, phone number and message.");
+    if (!name || !phone || !message || (consultation && !service)) {
+      setNotice(
+        consultation
+          ? "Please provide your name, phone number, selected service and message."
+          : "Please provide your name, phone number and message.",
+      );
       setNoticeType("error");
       return;
     }
@@ -36,7 +41,7 @@ export default function ContactForm({
       `Name: ${name}`,
       `Phone: ${phone}`,
       email ? `Email: ${email}` : "",
-      `Enquiry: ${subject || (consultation ? "Farm consultation" : "General enquiry")}`,
+      `Enquiry: ${consultation ? service : subject || "General enquiry"}`,
       "",
       message,
     ]
@@ -54,8 +59,8 @@ export default function ContactForm({
           name,
           phone,
           email,
-          subject,
-          service: subject,
+          subject: consultation ? service : subject,
+          service: consultation ? service : subject,
           message,
         }),
       });
@@ -93,7 +98,7 @@ export default function ContactForm({
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <form className={`contact-form${consultation ? " consultation-form" : ""}`} onSubmit={handleSubmit}>
       <div className="form-row">
         <div className="form-group">
           <label htmlFor="contact-name">
@@ -132,21 +137,34 @@ export default function ContactForm({
         />
       </div>
       <div className="form-group">
-        <label htmlFor="contact-subject">What can we help with?</label>
-        <select
-          defaultValue={consultation ? "Farm consultation" : ""}
-          id="contact-subject"
-          name="subject"
-        >
-          <option value="">Select a topic</option>
-          <option>Order - Poultry</option>
-          <option>Order - Fish</option>
-          <option>Order - Eggs</option>
-          <option>Pet care</option>
-          <option>Farm consultation</option>
-          <option>Delivery enquiry</option>
-          <option>Other</option>
-        </select>
+        {consultation ? (
+          <>
+            <label htmlFor="contact-service">
+              Select a service <span aria-hidden="true">*</span>
+            </label>
+            <select id="contact-service" name="service" required>
+              <option value="">Choose a service</option>
+              <option>Farm Setup</option>
+              <option>Consultancy</option>
+              <option>Training</option>
+              <option>Farm Audit</option>
+            </select>
+          </>
+        ) : (
+          <>
+            <label htmlFor="contact-subject">What can we help with?</label>
+            <select id="contact-subject" name="subject">
+              <option value="">Select a topic</option>
+              <option>Order - Poultry</option>
+              <option>Order - Fish</option>
+              <option>Order - Eggs</option>
+              <option>Pet care</option>
+              <option>Farm consultation</option>
+              <option>Delivery enquiry</option>
+              <option>Other</option>
+            </select>
+          </>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="contact-message">

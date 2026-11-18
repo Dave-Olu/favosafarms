@@ -49,11 +49,11 @@ export default async function FaqPage() {
           <div className="faq-page-cta">
             <h2>Still have a question?</h2>
             <p>Get in touch and we&apos;ll be glad to help.</p>
-            <div className="svc-cta-actions">
-              <Link className="svc-btn-primary" href="/contact">
+            <div className="faq-cta-actions">
+              <Link className="faq-btn-primary" href="/contact">
                 Contact Us
               </Link>
-              <Link className="svc-btn-wa" href="/book-consultation">
+              <Link className="faq-btn-secondary" href="/book-consultation">
                 Book a Consultation
               </Link>
             </div>

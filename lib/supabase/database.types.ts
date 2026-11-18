@@ -92,6 +92,26 @@ export type Database = {
           updated_at?: string;
         }
       >;
+      gallery_items: Table<
+        {
+          id: string;
+          storage_path: string;
+          media_type: "image" | "video";
+          alt_text: string;
+          caption: string;
+          display_order: number;
+          created_at: string;
+        },
+        {
+          id?: string;
+          storage_path: string;
+          media_type: "image" | "video";
+          alt_text: string;
+          caption?: string;
+          display_order?: number;
+          created_at?: string;
+        }
+      >;
       inquiries: Table<
         {
           id: string;

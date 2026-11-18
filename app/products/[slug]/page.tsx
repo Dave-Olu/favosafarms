@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import PuppyOrderButton from "../../../components/PuppyOrderButton";
 import { products } from "../../../lib/content";
 
 type ProductPageProps = { params: Promise<{ slug: string }> };
@@ -196,7 +197,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   </a>
                   <a href="/products" className="pd-btn-outline">
                     <IconGrid />
-                    VIEW PRICING
+                    MORE PRODUCTS
                   </a>
                 </>
               ) : (
@@ -227,11 +228,18 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               {/* Floating Dark Green Trust Card */}
               {!isSoon && (
                 <div className="pd-trust-card">
-                  <div className="pd-trust-item"><IconShieldCheck /> <span>No Harmful Drugs</span></div>
-                  <div className="pd-trust-item"><IconLeaf /> <span>Balanced Nutrition</span></div>
-                  <div className="pd-trust-item"><IconCleanBarn /> <span>Clean Environment</span></div>
-                  <div className="pd-trust-item"><IconFarmer /> <span>Proper Management</span></div>
-                  <div className="pd-trust-item"><IconHeart /> <span>Healthy Protein</span></div>
+                  {(product.trustHighlights && product.trustHighlights.length > 0 ? product.trustHighlights : [
+                    "No Harmful Drugs",
+                    "Balanced Nutrition",
+                    "Clean Environment",
+                    "Proper Management",
+                    "Healthy Protein",
+                  ]).map((highlight) => (
+                    <div className="pd-trust-item" key={highlight}>
+                      {getWhyIcon(highlight)}
+                      <span>{highlight}</span>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
@@ -299,7 +307,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       )}
 
       {/* ── GALLERY & ORDER OUR BROILERS ── */}
-      {((product.galleryImages && product.galleryImages.length > 0) || product.orderOptions) && (
+      {((product.galleryImages && product.galleryImages.length > 0) ||
+        product.orderOptions ||
+        product.slug === "dogs") && (
         <section className="pd-gallery-order-section">
           <div className="wrap pd-gallery-order-grid">
 
@@ -309,39 +319,54 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 <h2 className="pd-section-label">Gallery</h2>
                 <LeafAccent />
                 <div className="pd-gallery-grid">
-                  {product.galleryImages.slice(0, 6).map((img) => (
-                    <div className="pd-gallery-tile" key={img.src}>
+                  {product.galleryImages.slice(0, 6).map((img, index) => (
+                    <div className="pd-gallery-tile" key={`${img.src}-${index}`}>
                       <Image
                         src={img.src}
                         alt={img.alt}
                         fill
                         sizes="(max-width: 760px) 45vw, 220px"
-                        className="pd-gallery-img"
+                        className={`pd-gallery-img${img.crop ? ` pd-gallery-img--${img.crop}` : ""}`}
                       />
                     </div>
                   ))}
                 </div>
-                <a href={waHref} className="pd-gallery-cta" target="_blank" rel="noopener noreferrer">
-                  VIEW MORE PHOTOS &amp; VIDEOS
-                </a>
+                {product.slug === "dogs" ? (
+                  <PuppyOrderButton />
+                ) : (
+                  <Link href="/gallery" className="pd-gallery-cta">
+                    VIEW MORE PHOTOS &amp; VIDEOS
+                  </Link>
+                )}
               </div>
             )}
 
             {/* Right: Order Panel */}
-            {product.orderOptions && (
+            {(product.orderOptions || product.slug === "dogs") && (
               <div className="pd-order-panel">
-                <h2 className="pd-section-label">Order Our {product.name}</h2>
+                <h2 className="pd-section-label">
+                  {product.slug === "dogs" ? "Enquire About Our Dogs" : `Order Our ${product.name}`}
+                </h2>
                 <LeafAccent />
                 <p className="pd-order-desc">
-                  We are always ready to supply healthy {product.name.toLowerCase()} for your home, event, restaurant or business.
+                  {product.slug === "dogs"
+                    ? "Talk with our team about current availability, care requirements and whether a dog is the right fit for your home."
+                    : `We are always ready to supply healthy ${product.name.toLowerCase()} for your home, event, restaurant or business.`}
                 </p>
                 <ul className="pd-order-options">
-                  {product.orderOptions.map((opt, idx) => (
-                    <li key={opt}>
-                      <OrderOptionIcon index={idx} />
-                      <span>{opt}</span>
-                    </li>
-                  ))}
+                  {product.slug === "dogs"
+                    ? product.benefits.map((benefit) => (
+                        <li key={benefit}>
+                          <IconHeart />
+                          <span>{benefit}</span>
+                        </li>
+                      ))
+                    : product.orderOptions?.map((opt, idx) => (
+                        <li key={opt}>
+                          <OrderOptionIcon index={idx} />
+                          <span>{opt}</span>
+                        </li>
+                      ))}
                 </ul>
                 <div className="pd-order-buttons">
                   <a href={waHref} className="pd-btn-wa pd-btn-wa--full" target="_blank" rel="noopener noreferrer">
@@ -361,8 +386,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         </section>
       )}
 
-      {/* ── FAQ & OUR PROMISE ── */}
-      {(product.faqs && product.faqs.length > 0) || product.promiseLine ? (
+      {/* ── FAQ & CUSTOMER REVIEW ── */}
+      {(product.faqs && product.faqs.length > 0) || product.customerReview ? (
         <section className="pd-faq-promise-section">
           <div className="wrap pd-faq-promise-grid">
 
@@ -385,17 +410,27 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               </div>
             )}
 
-            {/* Right: Our Promise Box */}
-            {product.promiseLine && (
-              <div className="pd-promise-card">
-                <div className="pd-promise-icon" aria-hidden="true">
-                  <IconShieldCheck />
-                </div>
-                <h3>Our Promise</h3>
-                <p className="pd-promise-text">{product.promiseLine}</p>
-                <p className="pd-promise-author">— Favosa Farms</p>
+            {/* Right: Customer Review */}
+            <div className="pd-review-card">
+              <div className="pd-review-icon" aria-hidden="true">
+                <IconHeart />
               </div>
-            )}
+              <h3>Customer review</h3>
+              {product.customerReview ? (
+                <>
+                  <blockquote className="pd-review-quote">
+                    “{product.customerReview.quote}”
+                  </blockquote>
+                  <p className="pd-review-author">
+                    — {product.customerReview.name}, {product.customerReview.context}
+                  </p>
+                </>
+              ) : (
+                <p className="pd-review-empty">
+                  We&apos;ll share a product-specific customer review here when one is available.
+                </p>
+              )}
+            </div>
 
           </div>
         </section>

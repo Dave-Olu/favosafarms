@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import SiteChrome from "../components/SiteChrome";
 import StickyMobileCTA from "../components/StickyMobileCTA";
 import {
-  formatBusinessAddress,
   formatPhoneForLink,
   formatWhatsappNumber,
   getBusinessSettings,

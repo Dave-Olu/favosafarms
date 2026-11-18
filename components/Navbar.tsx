@@ -39,6 +39,7 @@ const links: NavLink[] = [
     href: "/knowledge-hub",
     items: [
       { label: "Knowledge Hub", href: "/knowledge-hub" },
+      { label: "Farm Gallery", href: "/gallery" },
       { label: "Success Stories", href: "/success-stories" },
       { label: "FAQ", href: "/faq" },
     ],
@@ -66,32 +67,6 @@ function ChevronIcon() {
   return (
     <svg aria-hidden="true" className="nav-chevron" viewBox="0 0 12 8" fill="none">
       <path d="m1 1.5 5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function SocialIcon({ name }: { name: "facebook" | "instagram" | "tiktok" }) {
-  if (name === "facebook") {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.5v3h2.6v8h3.4Z" />
-      </svg>
-    );
-  }
-
-  if (name === "instagram") {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="3" y="3" width="18" height="18" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 4v9.2a4.2 4.2 0 1 1-3.2-4.1M14 4c.5 2.8 2.4 4.5 5 4.8" />
     </svg>
   );
 }
@@ -189,37 +164,6 @@ export default function Navbar({ whatsappPhone }: { whatsappPhone: string }) {
 
   return (
     <>
-      <div className="nav-topbar">
-        <div className="wrap nav-topbar-inner">
-          <p>Welcome to Favosa Farms! We&apos;re glad you&apos;re here.</p>
-          <nav aria-label="Social media links" className="nav-topbar-socials">
-            <a
-              aria-label="Favosa Farms on Facebook (opens in a new tab)"
-              href="https://www.facebook.com/share/1BqQjKA3nL/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <SocialIcon name="facebook" />
-            </a>
-            <a
-              aria-label="Favosa Farms on Instagram (opens in a new tab)"
-              href="https://www.instagram.com/favosafarms"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <SocialIcon name="instagram" />
-            </a>
-            <a
-              aria-label="Favosa Farms on TikTok (opens in a new tab)"
-              href="https://www.tiktok.com/@favosafarms"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <SocialIcon name="tiktok" />
-            </a>
-          </nav>
-        </div>
-      </div>
       <header className="site-header">
       <div className="wrap nav-row">
         {/* Logo */}

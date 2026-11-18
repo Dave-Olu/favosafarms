@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import Link from "next/link";
 import type { AboutMetric, BusinessSettings, Faq } from "../../lib/cms";
 import type { Database } from "../../lib/supabase/database.types";
 import {
@@ -325,6 +326,7 @@ export default function CmsDashboard({
         <a href="#faqs">FAQs</a>
         <a href="#about-metrics">About metrics</a>
         <a href="#enquiries">Enquiries</a>
+        <Link href="/admin/gallery">Manage gallery</Link>
         <form action={signOutCms}>
           <button className="cms-signout-button" type="submit">Sign out</button>
         </form>

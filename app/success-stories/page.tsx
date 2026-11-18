@@ -1,33 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageBanner from "../../components/PageBanner";
+import { customerReviews } from "../../lib/content";
 
 export const metadata: Metadata = {
   title: "Success stories",
   description:
     "Feedback from households and farmers who have worked with Favosa Farms.",
 };
-
-const feedback = [
-  {
-    quote:
-      "The catfish we got from Favosa Farms was the freshest we've had — delivered alive and well-sized. Our restaurant has been ordering weekly ever since.",
-    name: "Mama Chibuzor",
-    context: "Restaurant owner, Yenagoa",
-  },
-  {
-    quote:
-      "I tried their farm consultation before setting up my own poultry pen and it saved me from so many rookie mistakes. Worth every minute of that session.",
-    name: "Emmanuel A.",
-    context: "Smallholder farmer, Okolobiri",
-  },
-  {
-    quote:
-      "Their eggs are consistently clean, large and fresh. I've stopped buying from the market entirely. The 7-day doorstep delivery is a bonus I didn't expect to love so much.",
-    name: "Ngozi P.",
-    context: "Home cook, Opolo",
-  },
-];
 
 export default function SuccessStoriesPage() {
   return (
@@ -49,7 +29,7 @@ export default function SuccessStoriesPage() {
             </p>
           </div>
           <div className="story-grid">
-            {feedback.map((item) => (
+            {customerReviews.map((item) => (
               <article className="story-card" key={item.name}>
                 <blockquote>{item.quote}</blockquote>
                 <cite>

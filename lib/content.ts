@@ -7,13 +7,41 @@ export type Product = {
   image?: string;
   availability: string;
   benefits: string[];
+  trustHighlights?: string[];
   whyChoose: { title: string; description: string }[];
   raisingProcess?: { step: number; title: string; description: string; image?: string }[];
-  galleryImages?: { src: string; alt: string }[];
+  galleryImages?: { src: string; alt: string; crop?: "left" | "right" }[];
   orderOptions?: string[];
   faqs?: { question: string; answer: string }[];
-  promiseLine?: string;
+  customerReview?: CustomerReview;
 };
+
+export type CustomerReview = {
+  quote: string;
+  name: string;
+  context: string;
+};
+
+export const customerReviews: CustomerReview[] = [
+  {
+    quote:
+      "The catfish we got from Favosa Farms was the freshest we've had — delivered alive and well-sized. Our restaurant has been ordering weekly ever since.",
+    name: "Mama Chibuzor",
+    context: "Restaurant owner, Yenagoa",
+  },
+  {
+    quote:
+      "I tried their farm consultation before setting up my own poultry pen and it saved me from so many rookie mistakes. Worth every minute of that session.",
+    name: "Emmanuel A.",
+    context: "Smallholder farmer, Okolobiri",
+  },
+  {
+    quote:
+      "Their eggs are consistently clean, large and fresh. I've stopped buying from the market entirely. The 7-day doorstep delivery is a bonus I didn't expect to love so much.",
+    name: "Ngozi P.",
+    context: "Home cook, Opolo",
+  },
+];
 
 export const products: Product[] = [
   {
@@ -26,6 +54,13 @@ export const products: Product[] = [
     image: "/Images/broilers.png",
     availability: "Available to order; confirm current size and quantities with us.",
     benefits: ["Careful flock management", "Healthy growth", "Household and bulk enquiries"],
+    trustHighlights: [
+      "No harmful drugs",
+      "Balanced nutrition",
+      "Clean environment",
+      "Proper management",
+      "Healthy protein",
+    ],
     whyChoose: [
       { title: "Healthy & Safe", description: "We follow proper withdrawal periods and responsible drug use." },
       { title: "Quality Feed", description: "Balanced, nutrient-rich feed for healthy growth and better meat quality." },
@@ -60,7 +95,6 @@ export const products: Product[] = [
       { question: "How do I place an order?", answer: "Contact us via WhatsApp or phone to confirm current availability, size and quantities before placing your order." },
       { question: "Do you deliver?", answer: "Yes, we deliver across Yenagoa and surrounding communities. Contact us to confirm your area and arrange delivery." },
     ],
-    promiseLine: "We are committed to producing healthy, safe and quality chicken through ethical and responsible farming practices.",
   },
   {
     slug: "turkey",
@@ -72,6 +106,11 @@ export const products: Product[] = [
     image: "/Images/turkey.png",
     availability: "Please enquire to confirm current availability and order details.",
     benefits: ["Availability confirmed on enquiry", "Household and bulk enquiries", "Discuss order arrangements"],
+    trustHighlights: [
+      "Farm-raised care",
+      "Order-by-enquiry flow",
+      "Flexible arrangements",
+    ],
     whyChoose: [
       { title: "Farm Raised", description: "Raised with care and proper management on our farm." },
       { title: "Enquire First", description: "Contact us to confirm availability before ordering." },
@@ -91,16 +130,28 @@ export const products: Product[] = [
     image: "/Images/catfish.png",
     availability: "Harvest and quantities vary; please enquire before ordering.",
     benefits: ["Freshly harvested to order", "Household and restaurant supply", "Discuss preparation preferences"],
+    trustHighlights: [
+      "Carefully monitored ponds",
+      "Clean, well-managed water systems",
+      "Healthy growth and quality control",
+      "Reliable availability updates",
+    ],
     whyChoose: [
-      { title: "Farm Fresh", description: "Harvested from our monitored ponds on order." },
-      { title: "Live or Processed", description: "Available live or cleaned and dressed to your preference." },
-      { title: "Restaurant Supply", description: "We supply restaurants, caterers and households." },
-      { title: "Clean Water", description: "Raised in clean, well-managed pond environments." },
+      { title: "Farm Fresh", description: "Harvested from our monitored ponds on order, so you get fish that are recent, clean and ready for market or home use." },
+      { title: "Healthy Growth", description: "We manage feed, stocking and pond conditions to support steady, natural growth without unnecessary stress on the fish." },
+      { title: "Live or Processed", description: "Available live or cleaned and dressed to your preference, making it easier to match your kitchen, restaurant or business needs." },
+      { title: "Restaurant Supply", description: "We support restaurants, caterers and households with dependable supply arranged around your required volume and timing." },
+      { title: "Clean Water", description: "Raised in clean, well-managed pond environments with regular attention to water quality and farm hygiene." },
+      { title: "Reliable Harvesting", description: "We work around current pond conditions and harvest schedules to help you plan purchases with greater confidence." },
+      // { title: "Flexible Orders", description: "Whether you need a small family order or a larger bulk arrangement, we can discuss the best option for your needs." },
     ],
     galleryImages: [
       { src: "/Images/catfish-farm-pond.png", alt: "Catfish farm ponds" },
       { src: "/Images/story-fish-ponds.png", alt: "Aerial view of fish ponds" },
       { src: "/Images/catfish.png", alt: "Fresh catfish" },
+      { src: "/Images/hero-farm-aerial.png", alt: "Aerial farm view with fish ponds" },
+      { src: "/Images/gallery-ponds-aerial.png", alt: "Pond area from above" },
+      { src: "/Images/hero-farm-aerial-no-text.png", alt: "Farm landscape with cultivation and ponds" },
     ],
     orderOptions: [
       "Live Fish (Wholesale & Retail)",
@@ -111,7 +162,7 @@ export const products: Product[] = [
       { question: "Do you deliver fish live or processed?", answer: "Both. Contact us to specify your preference and we will confirm availability." },
       { question: "What is your minimum order quantity?", answer: "We typically start from 5 kg. Contact us with your requirements." },
     ],
-    promiseLine: "Fresh catfish raised in clean, monitored ponds and harvested to order.",
+    customerReview: customerReviews[0],
   },
   {
     slug: "eggs",
@@ -123,6 +174,11 @@ export const products: Product[] = [
     image: "/Images/eggs-optimized.jpg",
     availability: "Please confirm current stock and delivery options.",
     benefits: ["Fresh farm supply", "Crate and bulk enquiries", "Local delivery enquiries"],
+    trustHighlights: [
+      "Fresh daily collection",
+      "Clean and graded eggs",
+      "Reliable supply",
+    ],
     whyChoose: [
       { title: "Farm Fresh", description: "Collected regularly and delivered fresh to your door." },
       { title: "Clean & Graded", description: "Eggs are clean, well-sized and handled carefully." },
@@ -131,6 +187,7 @@ export const products: Product[] = [
     faqs: [
       { question: "How are eggs sold?", answer: "Eggs are sold by the crate (30 eggs). Contact us for bulk pricing." },
     ],
+    customerReview: customerReviews[2],
   },
   {
     slug: "dogs",
@@ -142,16 +199,35 @@ export const products: Product[] = [
     image: "/Images/dog-sit-optimized.jpg",
     availability: "Availability varies; enquire for current information.",
     benefits: ["Responsible placement enquiries", "Care guidance", "Talk through suitability"],
+    trustHighlights: [
+      "Thoughtful care",
+      "Health-first approach",
+      "Responsible placement",
+      "Care guidance",
+    ],
     whyChoose: [
-      { title: "Responsibly Raised", description: "Our dogs are raised with proper nutrition and care." },
-      { title: "Care Guidance", description: "We help you understand the dog's needs before commitment." },
-      { title: "Healthy Animals", description: "We prioritise animal health and welfare." },
+      { title: "Thoughtful Care", description: "Our dogs receive attentive care and proper nutrition." },
+      { title: "Care Guidance", description: "Understand a dog's needs and daily care before making a commitment." },
+      { title: "Health Comes First", description: "We prioritise animal health and welfare in our care." },
+      { title: "Choose with Confidence", description: "Discuss breed options and suitability with our team before enquiring." },
+      { title: "Responsible Placement", description: "We encourage a considered match between each dog and its future home." },
+      { title: "Support Getting Started", description: "Get practical guidance on preparing for your puppy and its care needs." },
     ],
     galleryImages: [
       { src: "/Images/dog-sit-optimized.jpg", alt: "Dog sitting" },
       { src: "/Images/dog-rottweiler.png", alt: "Rottweiler dog" },
       { src: "/Images/09-gallery-dogs-kennel.png", alt: "Dogs in kennel" },
       { src: "/Images/story-man-with-dog.png", alt: "Farmer with dog" },
+      {
+        src: "/Images/dog-sit-optimized.jpg",
+        alt: "Close-up crop of the dogs sitting together",
+        crop: "left",
+      },
+      {
+        src: "/Images/dog-rottweiler.png",
+        alt: "Close-up crop of the Rottweiler puppy",
+        crop: "right",
+      },
     ],
     faqs: [
       { question: "What breeds do you have?", answer: "Contact us to check current availability of breeds and age groups." },

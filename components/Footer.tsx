@@ -139,7 +139,7 @@ export default function Footer({ business }: { business: BusinessSettings }) {
             ))}
           </div>
 
-          <div className="footer-col">
+          <div className="footer-col footer-products">
             <h2>Products</h2>
             {productLinks.map((link) => (
               <Link href={link.href} key={link.label} className={link.soon ? "footer-link-soon" : ""}>
